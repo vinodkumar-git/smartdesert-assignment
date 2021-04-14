@@ -18,7 +18,7 @@ Description:
 5. Product page -> With description, price and Add to cart button    
 6. CART page -> increase qty in cart, Decrease qty in the cart and Completely remove the products from the cart. 
 7. Checkout page -> Address Page for shipping and billing.
-8. Thanks page with order number.
+8. Thanks page with order number. Once order is placed, courses Stocks will be updated accordingly.
 ------------------------------------------------------------------------------------------------------------------------
 Admin/Backend page:
 
@@ -28,7 +28,7 @@ Admin/Backend page:
 3. We can see 3 models: 
     1. Orders - Consists of order info with billing and shipping address of the customers.
     2. Category - Consists of categories
-    3. Products - consists of all the products of belonging to different categories.
+    3. Products - consists of all the products of belonging to different categories with stocks and prices updations.
     4. Contact - list of people who have contacted from contactus page.
 ------------------------------------------------------------------------------------------------------------------------
 # Smartdesert-assignment
