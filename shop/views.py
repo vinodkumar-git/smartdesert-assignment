@@ -14,8 +14,8 @@ def contactus(request):
         email = request.POST['email']
         subject = request.POST['subject']
         message = request.POST['message']
-        cont = Contact(name=name, email=email, subject=subject, message=message)
-        cont.save()
+        c = Contact(name=name, email=email, subject=subject, message=message)
+        c.save()
         return render(request, 'shop/contact.html', {'Success': 'Submitted Successfully! Thank you for contacting us..'})
     else:
         return render(request, 'shop/contact.html')

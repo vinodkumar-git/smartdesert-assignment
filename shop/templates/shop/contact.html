@@ -31,57 +31,36 @@
             {% if Success %}
             <p style="padding: 20px; background-color: #2fb953; color: white;">{{ Success }}</p>
             {% endif %}
-            <form id="contact-form" name="contact-form" action="{% url 'contact' %}" method="POST">
-            {% csrf_token %}
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">Your name</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
-                            <label for="email" class="">Your email</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-                </div>
-                <!--Grid row-->
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control">
-                            <label for="subject" class="">Subject</label>
-                        </div>
-                    </div>
-                </div>
-                <!--Grid row-->
-                <!--Grid row-->
-                <div class="row">
 
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Your message</label>
+            <form method="POST" name="myForm" enctype="multipart/form-data" action="{% url 'contact' %}" >
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" name='name' class="form-control" placeholder="Your Name" data-rule="minlen:4" title="Please enter your name" required/>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control" name='email' placeholder="Your Email" data-rule="email" title="Please enter a valid email" required/>
+                            <div class="validate"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" name='subject' placeholder="Subject" data-rule="minlen:4" title="Please enter at least 8 chars of subject" required/>
+                            <div class="validate"></div>
                         </div>
 
                     </div>
-                </div>
-                <!--Grid row-->
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" data-rule="required" title="Please write something for us" placeholder="Message" required></textarea>
+                        <div class="validate"></div>
+                    </div>
+                    <div align="center">
+                        <button type="submit" class="btn btn-primary" data-toggle="modal" onsubmit="return validateForm()">
+                                Send Message
+                        </button>
+                    </div>
             </form>
-            <div class="text-center text-md-left">
-                <a class="btn btn-secondary btn-block my_custom_button" onclick="document.getElementById('contact-form').submit();">Send</a>
-            </div>
-            <div class="status"></div>
         </div>
         <!--Grid column-->
         <!--Grid column-->
@@ -104,4 +83,31 @@
     </div>
 </section>
 <!--Section: Contact v.2-->
+<script>
+function validateForm() {
+  var name = document.forms["myForm"]["name"].value;
+  var email = document.forms["myForm"]["email"].value;
+  var subject = document.forms["myForm"]["subject"].value;
+  var message = document.forms["myForm"]["message"].value;
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  else if(email == ""){
+    alert("Email must be filled out");
+    return false;
+  }
+  else if(subject == ""){
+    alert("subject must be filled out");
+    return false;
+  }else if(phone == ""){
+    alert("phone number must be filled out");
+    return false;
+  }
+  else if(message == ""){
+    alert("message box must be filled out");
+    return false;
+  }
+}
+</script>
 {% endblock %}

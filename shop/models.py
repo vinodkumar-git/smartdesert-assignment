@@ -44,9 +44,9 @@ class Product(models.Model):
         return '{}'.format(self.name)
 
 class Contact(models.Model):
-    name = models.CharField(max_length=250, unique=True)
+    name = models.CharField(max_length=250)
     email = models.EmailField()
-    subject = models.CharField(max_length=250, unique=True)
+    subject = models.CharField(max_length=250)
     message = models.TextField()
 
     def __str__(self):
