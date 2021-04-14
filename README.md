@@ -1,3 +1,9 @@
+Software Requirements Specifications:
+
+FrontEnd: Bootstrap4, HTML5, CSS, Javascript
+Backend: Python3, Django3 Framework
+Database: SQLite3
+------------------------------------------------------------------------------------------------------------------------
 Steps To Deploy:
 
 1. Download and extract the git zip file.
