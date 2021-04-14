@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <!--    To install google fonts, select and copy past the href link here and the css in the css file-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <!-- From Bootstrap - to make website more responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!--    for icons downlaod fontawesome and copy all.min.css to css folder and copy webfonts folder in the static folder -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'header.html' %}
+        {% include 'navbar.html' %}
+        {% block content %}
+
+<!--        write your page code-->
+
+        {% endblock %}
+    </div>
+        {% include 'footer.html' %}
+     <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

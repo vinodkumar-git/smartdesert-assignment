@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Thanks - Smart Desert Courses.
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="text-center">
+            <br>
+            <br>
+            <h1 class="text-center my_title">
+                Thanks for placing your order.
+            </h1>
+            <br>
+            <br>
+            <p>Your Order Number is: <b>{{ customer_order.id }}</b></p>
+            <br>
+            <br>
+            <p>We have recieved your order and will begin processing right away and will be delivered within 2-3 bussiness days.</p>
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}

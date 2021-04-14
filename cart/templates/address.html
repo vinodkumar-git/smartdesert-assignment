@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+    This is the shopping cart page. Proceed to review your items and place the order.
+{% endblock %}
+{% block title %}
+    Cart - XE Eshop
+{% endblock %}
+
+{% block content %}
+    <!--if there are no items in the cart-->
+
+
+<div class="mx-auto">
+    <br>
+    <h1 class="my_title text-center">Address and Shipping Details</h1>
+    <br>
+    <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+        <br>
+        <p>Enter the following Address information.</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="width30 floatL"><label>Billing Name</label></div>
+            <div class="width70 floatR"><input type="text" id="billingName" name="billingName" placeholder="Your Full Name" class="form-control" required>
+            </div><br>
+
+            <div class="width30 floatL"><label>Billing Email</label></div>
+            <div class="width70 floatR"><input type="email" id="billingEmail" name="billingEmail" placeholder="Your Email ID" class="form-control" required>
+            </div><br>
+
+            <div class="width30 floatL"><label>Address</label></div>
+            <div class="width70 floatR"><input type="text" id="billingAddress1" name="billingAddress1" placeholder="Billing To Address" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>City</label></div>
+            <div class="width70 floatR"><input type="text" id="billingCity" name="billingCity" placeholder="Billing to City" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>Postcode</label></div>
+            <div class="width70 floatR"><input type="number" id="billingPostcode" name="billingPostcode" placeholder="Post-Code" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>Country</label></div>
+            <div class="width70 floatR"><select name="billingCountry" size="1" id="billingCountry" class="form-control" required>
+              <option value="">Select Country..</option>
+             <option value="India">India</option>
+              </select></div>
+
+           <hr/>
+           <p><b>Billing Information <label><input type="checkbox" value="" id="check-address"> Same as billing?</label></b></p>
+
+            <div class="width30 floatL"><label>Shipping Name</label></div>
+            <div class="width70 floatR"><input type="text" id="shippingName" name="shippingName" placeholder="Your Full Name" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>Shipping Email</label></div>
+            <div class="width70 floatR"><input type="email" id="shippingEmail" name="shippingEmail" placeholder="Your Email ID" class="form-control" required>
+            </div><br>
+
+            <div class="width30 floatL"><label>Address</label></div>
+            <div class="width70 floatR"><input type="text" id="shippingAddress1" name="shippingAddress1" placeholder="Shipping To Address" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>City</label></div>
+            <div class="width70 floatR"><input type="text" id="shippingCity" name="shippingCity" placeholder="Shipping to City" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>Postcode</label></div>
+            <div class="width70 floatR"><input type="number" id="shippingPostcode" name="shippingPostcode" placeholder="Post-Code" class="form-control" required>
+           </div><br>
+
+            <div class="width30 floatL"><label>Country</label></div>
+            <div class="width70 floatR"><select name="shippingCountry" size="1" id="shippingCountry" class="form-control" required>
+              <option value="">Select Country..</option>
+             <option value="India">India</option>
+              </select></div>
+               <br>
+            <input type="submit" class="btn btn-secondary btn-block my_custom_button" value="Place order"/>
+
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+     $('#check-address').click(function(){
+     if ($('#check-address').is(":checked")) {
+      $('#shippingName').val($('#billingName').val());
+      $('#shippingEmail').val($('#billingEmail').val());
+      $('#shippingAddress1').val($('#billingAddress1').val());
+      $('#shippingCity').val($('#billingCity').val());
+      $('#shippingPostcode').val($('#billingPostcode').val());
+      var country = $('#billingCountry option:selected').val();
+      $('#shippingCountry option[value=' + country + ']').attr('selected','selected');
+     } else { //Clear on uncheck
+      $('#shippingName').val("");
+      $('#shippingAddress1').val("");
+      $('#shippingCity').val("");
+      $('#shippingPostcode').val("");
+      $('#shippingCountry option[value=""]').attr('selected','selected');
+     };
+    });
+
+   });
+</script>
+
+{% endblock %}
